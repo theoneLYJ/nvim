@@ -8,12 +8,15 @@ return {
 					enable = true,
 					use_treesitter = true,
 					style = {
-						{ fg = "#806d9c" },
+            { fg = "#8294C4" },
 					},
 				},
 				indent = {
 					chars = { "│", "¦", "┆", "┊" },
-					use_treesitter = false,
+					use_treesitter = true,
+					style = {
+            { fg = "#7D7C7C" }
+					},
 				},
 				blank = {
 					enable = false,
@@ -173,6 +176,21 @@ return {
 		dependencies = 'nvim-tree/nvim-web-devicons',
 		config = function()
 			require("bufferline").setup {}
+
+			local opt = {
+				noremap = true,
+				silent = true,
+			}
+
+			-- 本地变量
+			local map = vim.api.nvim_set_keymap
+			-- bufferline
+			-- 左右Tab切换
+			map("n", "<S-h>", ":BufferLineCyclePrev<CR>", opt)
+			map("n", "<S-l>", ":BufferLineCycleNext<CR>", opt)
+			-- "moll/vim-bbye" 关闭当前 buffer
+			map("n", "<leader>c", ":Bdelete!<CR>", opt)
+			map("n", "<leader>C", ":BufferLineCloseOthers<CR>", opt)
 		end
 	}
 }

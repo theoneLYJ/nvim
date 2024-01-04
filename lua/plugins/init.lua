@@ -13,6 +13,7 @@ require("lazy").setup(
 			require("plugins.configs.lsp"),
 			require("plugins.configs.debugger"),
 			require("plugins.configs.completion"),
+			require("plugins.configs.markdown"),
 		},
 		install = {
 			-- install missing plugins on startup. This doesn't increase startup time.

@@ -5,6 +5,11 @@ return {
 	},
 
 	{
+		"moll/vim-bbye",
+		event = "VeryLazy",
+	},
+
+	{
 		"ahmedkhalf/project.nvim",
 		event = "VeryLazy",
 		init = function()
