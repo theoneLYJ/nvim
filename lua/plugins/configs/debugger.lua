@@ -4,6 +4,8 @@ return {
 		dependencies = { "rcarriga/nvim-dap-ui" },
 		config = function()
 			local dap, dapui = require("dap"), require("dapui")
+			vim.fn.sign_define('DapBreakpoint', {text = mo.styles.icons.dap.signs.breakpoint, texthl = '', linehl = '', numhl = ''})
+			vim.fn.sign_define('DapStopped', {text = mo.styles.icons.dap.signs.stopped, texthl = '', linehl = '', numhl = ''})
 			dapui.setup()
 			dap.listeners.after.event_initialized["dapui_config"] = function()
 				dapui.open()
@@ -92,6 +94,12 @@ return {
 			vim.keymap.set("n", "<Leader>dr", function()
 				dap.continue()
 			end)
+
+			vim.keymap.set("n", "<F11>", ":lua require'dap'.step_out()<CR>")
+			vim.keymap.set("n", "<F10>", ":lua require'dap'.step_into()<CR>")
+			-- 弹窗
+			vim.keymap.set("n", "<leader>dh", ":lua require'dapui'.eval()<CR>")
+
 		end,
 	},
 }
